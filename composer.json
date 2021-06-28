@@ -27,7 +27,7 @@
         "slim/slim": "^4.8"
     },
     "scripts": {
-        "serve": "php -S localhost:8000 -t pubilc/",
+        "serve": "php -S localhost:8000 -t public/",
         "test":  "./vendor/bin/pest",
         "test-coverage": "./vendor/bin/pest --coverage"
     },
