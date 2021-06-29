@@ -8,6 +8,11 @@ use JustSteveKing\Config\Repository;
 use JustSteveKing\ConfigLoader\Loader;
 use JustSteveKing\Micro\Contracts\KernelContract;
 use JustSteveKing\Micro\Kernel;
+use League\Tactician\CommandBus;
+use League\Tactician\Handler\CommandHandlerMiddleware;
+use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
+use League\Tactician\Handler\Locator\InMemoryLocator;
+use League\Tactician\Handler\MethodNameInflector\HandleInflector;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
@@ -68,6 +73,25 @@ return [
 
         return DriverManager::getConnection(
             params: $config->get('database'),
+        );
+    },
+
+    CommandBus::class => function (ContainerInterface $container) {
+        $locator = new InMemoryLocator();
+
+        $locator->addHandler(
+            new \App\Articles\ListArticlesHandler($container->get(Connection::class)),
+            \App\Articles\ListArticlesCommand::class,
+        );
+
+        $handlerMiddleware = new CommandHandlerMiddleware(
+            commandNameExtractor: new ClassNameExtractor(),
+            handlerLocator: $locator,
+            methodNameInflector: new HandleInflector(),
+        );
+
+        return new CommandBus(
+            middleware: [$handlerMiddleware],
         );
     },
 ];

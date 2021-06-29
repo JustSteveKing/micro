@@ -4,28 +4,24 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
-use Doctrine\DBAL\Connection;
+use App\Articles\ListArticlesCommand;
 use JustSteveKing\Micro\Http\ApiResponseFactory;
-use JustSteveKing\StatusCode\Http;
+use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Psr7\Response;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class TestHandler implements \Psr\Http\Server\RequestHandlerInterface
+class TestHandler implements RequestHandlerInterface
 {
-    public function __construct(private Connection $connection) {}
+    public function __construct(
+        private CommandBus $bus,
+    ) {}
     /**
      * @inheritDoc
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = 'SELECT uuid, title FROM articles';
-
-        $statement = $this->connection->prepare(
-            sql: $query,
-        );
-
-        $results = $statement->executeQuery()->fetchAllAssociative();
+        $results = $this->bus->handle(new ListArticlesCommand());
 
         return ApiResponseFactory::make(
             data: [
