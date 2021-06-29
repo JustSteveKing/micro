@@ -24,19 +24,26 @@ $kernel = $container->get(
 );
 
 /**
+ * Our Slim Application
+ *
+ * @var \Slim\App
+ */
+$app = $kernel->app();
+
+/**
  * Register our API routes.
  */
-(require __DIR__ . '/../routes/api.php')($kernel->app());
+(require __DIR__ . '/../routes/api.php')($app);
 
 /**
  * Register our Application Middleware.
  */
-(require __DIR__ . '/../config/middleware.php')($kernel->app());
+(require __DIR__ . '/../config/middleware.php')($app);
 
 /**
  * Assign matched route arguments to Request attributes for PSR-15 handlers
  */
-$kernel->app()->getRouteCollector()->setDefaultInvocationStrategy(
+$app->getRouteCollector()->setDefaultInvocationStrategy(
     strategy: new RequestHandler(
         appendRouteArgumentsToRequestAttributes: true,
     ),
@@ -46,4 +53,3 @@ $kernel->app()->getRouteCollector()->setDefaultInvocationStrategy(
  * Start our Application.
  */
 $kernel->start();
-//dd($kernel);
