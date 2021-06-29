@@ -21,11 +21,18 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../micro-core",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
-        "php": "^8.0"
-    },
-    "require-dev": {
-        "pestphp/pest": "^1.8"
+        "php": "^8.0",
+        "juststeveking/micro-core": "dev-master"
     },
     "scripts": {
         "serve": "php -S localhost:8000 -t public/",
