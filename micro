@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Console\RouteListCommand;
+use JustSteveKing\Micro\Contracts\KernelContract;
+use Symfony\Component\Console\Application;
+
+$cli = new Application(
+    name: 'micro',
+    version: '0.0.1',
+);
+
+$container = require __DIR__ . '/bootstrap/app.php';
+
+$kernel = $container->get(
+    name: KernelContract::class,
+);
+
+(require __DIR__ . '/routes/api.php')($kernel->app());
+
+$cli->add(
+    command: new RouteListCommand(
+        slim: $kernel->app(),
+    ),
+);
+
+// ... register commands
+
+$cli->run();

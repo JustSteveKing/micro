@@ -30,7 +30,8 @@
         "juststeveking/micro-core": "dev-main",
         "league/tactician": "^1.1",
         "monolog/monolog": "^2.2",
-        "php-di/php-di": "^6.3"
+        "php-di/php-di": "^6.3",
+        "symfony/console": "^5.3"
     },
     "scripts": {
         "serve": "php -S localhost:8000 -t public/",
