@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Handlers;
 
 use Doctrine\DBAL\Connection;
+use JustSteveKing\Micro\Http\ApiResponseFactory;
 use JustSteveKing\StatusCode\Http;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -26,21 +27,13 @@ class TestHandler implements \Psr\Http\Server\RequestHandlerInterface
 
         $results = $statement->executeQuery()->fetchAllAssociative();
 
-        $response = new Response(
-            status: Http::OK,
+        return ApiResponseFactory::make(
+            data: [
+                'data' => $results
+            ],
+            headers: [
+                'Content-Type' => 'application/vnd.api+json'
+            ],
         );
-
-        $response = $response->withHeader(
-            name: 'Content-Type',
-            value: 'application/vnd.api+json',
-        );
-
-        $response->getBody()->write(
-            string: json_encode([
-                'data' => $results,
-            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
-        );
-
-        return $response;
     }
 }

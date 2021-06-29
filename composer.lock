@@ -710,16 +710,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JustSteveKing/micro-core.git",
-                "reference": "cac75acce2d093b015ef9047747e5185286ad237"
+                "reference": "4db2c9cdbd1909f3646c4d44591c6f92874d7227"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/cac75acce2d093b015ef9047747e5185286ad237",
-                "reference": "cac75acce2d093b015ef9047747e5185286ad237",
+                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/4db2c9cdbd1909f3646c4d44591c6f92874d7227",
+                "reference": "4db2c9cdbd1909f3646c4d44591c6f92874d7227",
                 "shasum": ""
             },
             "require": {
                 "dragonmantank/cron-expression": "^3.1",
+                "juststeveking/http-status-code": "^2.0",
                 "nesbot/carbon": "^2.50",
                 "php": "^8.0",
                 "psr/container": "^1.0",
@@ -750,7 +751,7 @@
                 "issues": "https://github.com/JustSteveKing/micro-core/issues",
                 "source": "https://github.com/JustSteveKing/micro-core/tree/main"
             },
-            "time": "2021-06-29T13:17:48+00:00"
+            "time": "2021-06-29T20:01:59+00:00"
         },
         {
             "name": "monolog/monolog",

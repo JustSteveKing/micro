@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Handlers;
 
 use JustSteveKing\Config\Repository;
+use JustSteveKing\Micro\Http\ApiResponseFactory;
 use JustSteveKing\StatusCode\Http;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,22 +23,11 @@ class RootHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $response = new Response(
-            status: Http::OK,
+        return ApiResponseFactory::make(
+            data: ['name' => $this->config->get('app.name')],
+            headers: [
+                'Content-Type' => 'application/vnd.api+json'
+            ],
         );
-
-        // JSON:API spec
-        $response = $response->withHeader(
-            name: 'Content-Type',
-            value: 'application/vnd.api+json',
-        );
-
-        $response->getBody()->write(
-            string: json_encode([
-                'name' => $this->config->get('app.name'),
-            ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
-        );
-
-        return $response;
     }
 }
