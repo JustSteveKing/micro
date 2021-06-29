@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Handlers\RootHandler;
+use App\Handlers\TestHandler;
 use Slim\App;
 
 /**
@@ -18,5 +19,15 @@ return function (App $app) {
         callable: RootHandler::class,
     )->setName(
         name: 'api:root',
+    );
+
+    /**
+     * Test Route
+     */
+    $app->get(
+        pattern: '/test',
+        callable: TestHandler::class,
+    )->setName(
+        name: 'api:test'
     );
 };

@@ -4,29 +4,32 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
-use JustSteveKing\Config\Repository;
+use Doctrine\DBAL\Connection;
 use JustSteveKing\StatusCode\Http;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Psr7\Response;
 
-class RootHandler implements RequestHandlerInterface
+class TestHandler implements \Psr\Http\Server\RequestHandlerInterface
 {
-    public function __construct(
-        private Repository $config,
-    ) {}
-
+    public function __construct(private Connection $connection) {}
     /**
      * @inheritDoc
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $query = 'SELECT uuid, title FROM articles';
+
+        $statement = $this->connection->prepare(
+            sql: $query,
+        );
+
+        $results = $statement->executeQuery()->fetchAllAssociative();
+
         $response = new Response(
             status: Http::OK,
         );
 
-        // JSON:API spec
         $response = $response->withHeader(
             name: 'Content-Type',
             value: 'application/vnd.api+json',
@@ -34,7 +37,7 @@ class RootHandler implements RequestHandlerInterface
 
         $response->getBody()->write(
             string: json_encode([
-                'name' => $this->config->get('app.name'),
+                'data' => $results,
             ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
         );
 

@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
+use JustSteveKing\Config\Repository;
+use JustSteveKing\ConfigLoader\Loader;
 use JustSteveKing\Micro\Contracts\KernelContract;
 use JustSteveKing\Micro\Kernel;
 use Monolog\Handler\StreamHandler;
@@ -35,5 +39,35 @@ return [
         );
 
         return $logger;
+    },
+
+    Repository::class => function () {
+        $loader = new Loader(
+            basePath: dirname(__DIR__ . '/../'),
+        );
+
+        $loader->load(
+            name: 'app',
+        );
+        $loader->load(
+            name: 'database',
+        );
+
+        return Repository::build(
+            items: $loader->config(),
+        );
+    },
+
+    Connection::class => function (ContainerInterface $container) {
+        /**
+         * @var Repository
+         */
+        $config = $container->get(
+            Repository::class
+        );
+
+        return DriverManager::getConnection(
+            params: $config->get('database'),
+        );
     },
 ];

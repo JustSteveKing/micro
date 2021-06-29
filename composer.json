@@ -23,6 +23,9 @@
     },
     "require": {
         "php": "^8.0",
+        "doctrine/dbal": "^3.1",
+        "juststeveking/config": "^2.0",
+        "juststeveking/config-loader": "^0.1.0",
         "juststeveking/http-status-code": "^2.0",
         "juststeveking/micro-core": "dev-main",
         "monolog/monolog": "^2.2",
