@@ -9,6 +9,7 @@ use JustSteveKing\Config\Repository;
 use JustSteveKing\ConfigLoader\Loader;
 use JustSteveKing\Micro\Contracts\KernelContract;
 use JustSteveKing\Micro\Kernel;
+use JustSteveKing\Micro\Routing\Dispatcher;
 use League\Tactician\CommandBus;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
@@ -19,12 +20,42 @@ use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use Slim\CallableResolver;
+use Slim\Handlers\Strategies\RequestHandler;
+use Slim\Psr7\Factory\ResponseFactory;
+use Slim\Psr7\Factory\UriFactory;
+use Slim\Routing\RouteCollector;
+use Slim\Routing\RouteResolver;
 
 return [
     KernelContract::class => function (ContainerInterface $container) {
+        $callableResolver = new CallableResolver(
+            container: $container,
+        );
+        $responseFactory = new ResponseFactory();
+        $uriFactory = new UriFactory();
+
+        $routeCollector = new RouteCollector(
+            responseFactory: $responseFactory,
+            callableResolver: $callableResolver,
+            container: $container,
+            defaultInvocationStrategy: new RequestHandler(),
+        );
+
+        $routeResolver = new RouteResolver(
+            routeCollector: $routeCollector,
+            dispatcher: new Dispatcher(
+                routeCollector: $routeCollector,
+                uriFactory: $uriFactory,
+            ),
+        );
+
         return Kernel::boot(
             basePath: __DIR__ . '/../',
             container: $container,
+            callableResolver: $callableResolver,
+            routeCollector: $routeCollector,
+            routeResolver: $routeResolver,
         );
     },
 
