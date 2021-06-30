@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use JustSteveKing\Config\Repository;
@@ -73,7 +74,14 @@ return [
 
         return DriverManager::getConnection(
             params: $config->get('database'),
+            config: new Configuration(),
         );
+    },
+
+    PDO::class => function (ContainerInterface $container) {
+        return $container->get(
+            id: Connection::class,
+        )->getWrappedConnection();
     },
 
     CommandBus::class => function (ContainerInterface $container) {
