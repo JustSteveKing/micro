@@ -3,5 +3,5 @@
 declare(strict_types=1);
 
 return [
-    'name' => 'Micro app',
+    'name' => $_ENV['APP_NAME'],
 ];

@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 return [
-    'driver' => 'pdo_mysql',
-    'host' => 'localhost',
-    'dbname' => 'phponline',
-    'user' => 'root',
-    'password' => 'root',
+    'driver' => $_ENV['DB_DRIVER'],
+    'host' => $_ENV['DB_HOST'],
+    'dbname' => $_ENV['DB_NAME'],
+    'user' => $_ENV['DB_USER'],
+    'password' => $_ENV['DB_PASS'],
     'charset' => 'utf8mb4',
     'collation' => 'utf8mb4_unicode_ci',
     'driverOptions' => [

@@ -9,8 +9,11 @@ use App\Console\RouteListCommand;
 use JustSteveKing\Micro\Contracts\KernelContract;
 use Symfony\Component\Console\Application;
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/');
+$dotenv->load();
+
 $cli = new Application(
-    name: 'micro',
+    name: $_ENV['APP_NAME'],
     version: '0.0.1',
 );
 

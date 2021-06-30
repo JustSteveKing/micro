@@ -7,6 +7,9 @@ use Slim\Handlers\Strategies\RequestHandler;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 /**
  * Build our Container.
  *

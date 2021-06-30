@@ -35,7 +35,8 @@
         "monolog/monolog": "^2.2",
         "php-di/php-di": "^6.3",
         "symfony/console": "^5.3",
-        "symfony/process": "^5.3"
+        "symfony/process": "^5.3",
+        "vlucas/phpdotenv": "^5.3"
     },
     "scripts": {
         "serve": "php -S localhost:8000 -t public/",
