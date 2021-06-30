@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cef62e7ede4be3e2b5fae43ccb19aeeb",
+    "content-hash": "f7bcf5304373a6b7e1f07b97b604c94e",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -733,6 +733,72 @@
                 "source": "https://github.com/thephpleague/tactician/tree/v1.1.0"
             },
             "time": "2021-02-14T15:29:04+00:00"
+        },
+        {
+            "name": "lulco/phoenix",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lulco/phoenix.git",
+                "reference": "8e55c54438327d2d653fb29f35d3e3c975a8cc37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lulco/phoenix/zipball/8e55c54438327d2d653fb29f35d3e3c975a8cc37",
+                "reference": "8e55c54438327d2d653fb29f35d3e3c975a8cc37",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": ">= 7.1",
+                "symfony/console": "^3.1|^4.0|^5.0",
+                "symfony/finder": "^3.1|^4.0|^5.0"
+            },
+            "conflict": {
+                "symfony/console": "3.4.31|4.3.4"
+            },
+            "require-dev": {
+                "nette/neon": "^2.3|^3.0",
+                "phpunit/phpunit": ">7.2",
+                "ramsey/uuid": "^3.7|^4.0",
+                "symfony/yaml": "^3.1|^4.0|^5.0"
+            },
+            "suggest": {
+                "nette/neon": "Allows use *.neon file as config file and class Phoenix\\Config\\Parser\\NeonConfigParser to parse it",
+                "symfony/yaml": "Allows use *.yml / *.yaml file as config file and class Phoenix\\Config\\Parser\\YamlConfigParser to parse it"
+            },
+            "bin": [
+                "bin/phoenix"
+            ],
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Database Migrations for PHP",
+            "keywords": [
+                "Multiple folders",
+                "create",
+                "database",
+                "dump",
+                "migrate",
+                "migrations",
+                "php",
+                "query builder",
+                "rollback",
+                "status"
+            ],
+            "support": {
+                "issues": "https://github.com/lulco/phoenix/issues",
+                "source": "https://github.com/lulco/phoenix/tree/1.8.0"
+            },
+            "time": "2021-06-01T21:28:54+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1936,6 +2002,67 @@
             "time": "2021-03-23T23:28:01+00:00"
         },
         {
+            "name": "symfony/finder",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/finder.git",
+                "reference": "0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
+                "reference": "0ae3f047bed4edff6fd35b26a9a6bfdc92c953c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Finder\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Finds files and directories via an intuitive fluent interface",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/finder/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T12:52:38+00:00"
+        },
+        {
             "name": "symfony/polyfill-ctype",
             "version": "v1.23.0",
             "source": {
@@ -2420,6 +2547,68 @@
                 }
             ],
             "time": "2021-02-19T12:13:01+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v5.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "714b47f9196de61a196d86c4bad5f09201b307df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/714b47f9196de61a196d86c4bad5f09201b307df",
+                "reference": "714b47f9196de61a196d86c4bad5f09201b307df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v5.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-06-12T10:15:01+00:00"
         },
         {
             "name": "symfony/service-contracts",

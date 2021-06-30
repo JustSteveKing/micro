@@ -28,6 +28,22 @@ $cli->add(
     ),
 );
 
+/**
+ * Database Migration Commands
+ */
+$cli->addCommands(
+    commands: [
+        new \App\Console\Migrations\StatusCommand(),
+        new \App\Console\Migrations\MigrateCommand(),
+        new \App\Console\Migrations\CreateCommand(),
+        new \App\Console\Migrations\RollbackCommand(),
+        new \App\Console\Migrations\DumpCommand(),
+        new \App\Console\Migrations\DiffCommand(),
+        new \App\Console\Migrations\TestCommand(),
+        new \App\Console\Migrations\CleanupCommand(),
+    ],
+);
+
 // ... register commands
 
 $cli->run();
