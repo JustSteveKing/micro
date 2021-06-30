@@ -36,6 +36,7 @@
         "php-di/php-di": "^6.3",
         "symfony/console": "^5.3",
         "symfony/process": "^5.3",
+        "symfony/routing": "^5.3",
         "vlucas/phpdotenv": "^5.3"
     },
     "scripts": {

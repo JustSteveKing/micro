@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28c4cc3eb99dd401a669c5c4e2cd4a2e",
+    "content-hash": "3efd160d011ba6ef6820c26f1e65c6e1",
     "packages": [
         {
             "name": "crell/api-problem",
@@ -772,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JustSteveKing/micro-core.git",
-                "reference": "483a2bb6d4b6a9620a0812612a6322c506384f08"
+                "reference": "efe35da7cd550c9111571d505d4f76ad617db4d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/483a2bb6d4b6a9620a0812612a6322c506384f08",
-                "reference": "483a2bb6d4b6a9620a0812612a6322c506384f08",
+                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/efe35da7cd550c9111571d505d4f76ad617db4d0",
+                "reference": "efe35da7cd550c9111571d505d4f76ad617db4d0",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +788,9 @@
                 "php": "^8.0",
                 "psr/container": "^1.0",
                 "slim/psr7": "^1.4",
-                "slim/slim": "^4.8",
+                "slim/slim": "^4.8"
+            },
+            "require-dev": {
                 "symfony/routing": "^5.3"
             },
             "default-branch": true,
@@ -815,7 +817,7 @@
                 "issues": "https://github.com/JustSteveKing/micro-core/issues",
                 "source": "https://github.com/JustSteveKing/micro-core/tree/main"
             },
-            "time": "2021-06-30T10:32:18+00:00"
+            "time": "2021-06-30T10:43:14+00:00"
         },
         {
             "name": "league/tactician",
