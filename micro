@@ -3,50 +3,20 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/vendor/autoload.php';
-
-use App\Console\RouteListCommand;
 use JustSteveKing\Micro\Contracts\KernelContract;
 use Symfony\Component\Console\Application;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/');
-$dotenv->load();
-
-$cli = new Application(
-    name: $_ENV['APP_NAME'],
-    version: '0.0.1',
-);
-
-$container = require __DIR__ . '/bootstrap/app.php';
-
-$kernel = $container->get(
-    name: KernelContract::class,
-);
-
-(require __DIR__ . '/routes/api.php')($kernel->app());
-
-$cli->add(
-    command: new RouteListCommand(
-        slim: $kernel->app(),
-    ),
-);
+require __DIR__ . '/vendor/autoload.php';
 
 /**
- * Database Migration Commands
+ * @var \Psr\Container\ContainerInterface $container
  */
-$cli->addCommands(
-    commands: [
-        new \App\Console\Migrations\StatusCommand(),
-        new \App\Console\Migrations\MigrateCommand(),
-        new \App\Console\Migrations\CreateCommand(),
-        new \App\Console\Migrations\RollbackCommand(),
-        new \App\Console\Migrations\DumpCommand(),
-        new \App\Console\Migrations\DiffCommand(),
-        new \App\Console\Migrations\TestCommand(),
-        new \App\Console\Migrations\CleanupCommand(),
-    ],
-);
+$container = require __DIR__ . '/bootstrap/app.php';
+$kernel = $container->get(KernelContract::class);
 
-// ... register commands
+// Load in Routes for route:list command
+(require __DIR__ . '/routes/api.php')($kernel->app());
 
-$cli->run();
+$application = $container->get(Application::class);
+
+$application->run();

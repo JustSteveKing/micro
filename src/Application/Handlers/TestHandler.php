@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
-use App\Articles\ListArticlesCommand;
+use Domain\User\ListUsersQuery;
 use JustSteveKing\Micro\Http\ApiResponseFactory;
 use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
@@ -16,12 +16,13 @@ class TestHandler implements RequestHandlerInterface
     public function __construct(
         private CommandBus $bus,
     ) {}
+
     /**
      * @inheritDoc
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $results = $this->bus->handle(new ListArticlesCommand());
+        $results = $this->bus->handle(new ListUsersQuery());
 
         return ApiResponseFactory::make(
             data: [

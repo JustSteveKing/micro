@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use Infrastructure\Database\UserRepository;
 use JustSteveKing\Config\Repository;
 use JustSteveKing\ConfigLoader\Loader;
 use JustSteveKing\Micro\Contracts\KernelContract;
@@ -26,6 +27,7 @@ use Slim\Psr7\Factory\ResponseFactory;
 use Slim\Psr7\Factory\UriFactory;
 use Slim\Routing\RouteCollector;
 use Slim\Routing\RouteResolver;
+use Symfony\Component\Console\Application;
 
 return [
     KernelContract::class => function (ContainerInterface $container) {
@@ -119,8 +121,10 @@ return [
         $locator = new InMemoryLocator();
 
         $locator->addHandler(
-            new \App\Articles\ListArticlesHandler($container->get(Connection::class)),
-            \App\Articles\ListArticlesCommand::class,
+            new \Domain\User\ListUsersHandler(
+                repository: $container->get(UserRepository::class),
+            ),
+            \Domain\User\ListUsersQuery::class,
         );
 
         $handlerMiddleware = new CommandHandlerMiddleware(
@@ -133,4 +137,35 @@ return [
             middleware: [$handlerMiddleware],
         );
     },
+
+    UserRepository::class => function (ContainerInterface $container) {
+        return new UserRepository(
+            connection: $container->get(Connection::class),
+        );
+    },
+
+    Application::class => function (ContainerInterface $container) {
+        $application = new Application(
+            name: 'micro cli',
+        );
+
+        /**
+         * @var Repository $config
+         */
+        $config = $container->get(Repository::class);
+
+        foreach ($config->get('app.console.commands') as $class) {
+            $application->add(
+                command: $container->get($class),
+            );
+        }
+
+        return $application;
+    },
+
+    \App\Console\RouteListCommand::class => function (ContainerInterface $container) {
+        return new \App\Console\RouteListCommand(
+            slim: $container->get(KernelContract::class)->app(),
+        );
+    }
 ];
