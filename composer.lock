@@ -7,6 +7,76 @@
     "content-hash": "28c4cc3eb99dd401a669c5c4e2cd4a2e",
     "packages": [
         {
+            "name": "crell/api-problem",
+            "version": "3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crell/ApiProblem.git",
+                "reference": "8e4b97ca5938f9e851889816601eb85abf33c6d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crell/ApiProblem/zipball/8e4b97ca5938f9e851889816601eb85abf33c6d9",
+                "reference": "8e4b97ca5938f9e851889816601eb85abf33c6d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "laminas/laminas-diactoros": "^2.0",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "1.*"
+            },
+            "suggest": {
+                "psr/http-factory": "Common interfaces for PSR-7 HTTP message factories",
+                "psr/http-message": "Common interface for HTTP messages"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Crell\\ApiProblem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Larry Garfield",
+                    "email": "larry@garfieldtech.com",
+                    "homepage": "http://www.garfieldtech.com/"
+                }
+            ],
+            "description": "PHP wrapper for the api-problem IETF specification",
+            "homepage": "https://github.com/Crell/ApiProblem",
+            "keywords": [
+                "api-problem",
+                "http",
+                "json",
+                "rest",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/Crell/ApiProblem/issues",
+                "source": "https://github.com/Crell/ApiProblem/tree/3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Crell",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-02-21T03:32:09+00:00"
+        },
+        {
             "name": "doctrine/cache",
             "version": "2.0.3",
             "source": {
@@ -702,15 +772,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JustSteveKing/micro-core.git",
-                "reference": "cf355cc4b4bc30d7c509c9989549651250de9a98"
+                "reference": "843b32a30e455679a052275f4e19125d884984e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/cf355cc4b4bc30d7c509c9989549651250de9a98",
-                "reference": "cf355cc4b4bc30d7c509c9989549651250de9a98",
+                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/843b32a30e455679a052275f4e19125d884984e2",
+                "reference": "843b32a30e455679a052275f4e19125d884984e2",
                 "shasum": ""
             },
             "require": {
+                "crell/api-problem": "^3.5",
                 "dragonmantank/cron-expression": "^3.1",
                 "juststeveking/http-status-code": "^2.0",
                 "nesbot/carbon": "^2.50",
@@ -743,7 +814,7 @@
                 "issues": "https://github.com/JustSteveKing/micro-core/issues",
                 "source": "https://github.com/JustSteveKing/micro-core/tree/main"
             },
-            "time": "2021-06-30T08:26:57+00:00"
+            "time": "2021-06-30T09:19:39+00:00"
         },
         {
             "name": "league/tactician",
@@ -2826,16 +2897,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.3.2",
+            "version": "v5.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "0732e97e41c0a590f77e231afc16a327375d50b0"
+                "reference": "bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/0732e97e41c0a590f77e231afc16a327375d50b0",
-                "reference": "0732e97e41c0a590f77e231afc16a327375d50b0",
+                "url": "https://api.github.com/repos/symfony/string/zipball/bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1",
+                "reference": "bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1",
                 "shasum": ""
             },
             "require": {
@@ -2889,7 +2960,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.3.2"
+                "source": "https://github.com/symfony/string/tree/v5.3.3"
             },
             "funding": [
                 {
@@ -2905,20 +2976,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-06T09:51:56+00:00"
+            "time": "2021-06-27T11:44:38+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v5.3.2",
+            "version": "v5.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "7e2603bcc598e14804c4d2359d8dc4ee3c40391b"
+                "reference": "380b8c9e944d0e364b25f28e8e555241eb49c01c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/7e2603bcc598e14804c4d2359d8dc4ee3c40391b",
-                "reference": "7e2603bcc598e14804c4d2359d8dc4ee3c40391b",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/380b8c9e944d0e364b25f28e8e555241eb49c01c",
+                "reference": "380b8c9e944d0e364b25f28e8e555241eb49c01c",
                 "shasum": ""
             },
             "require": {
@@ -2984,7 +3055,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v5.3.2"
+                "source": "https://github.com/symfony/translation/tree/v5.3.3"
             },
             "funding": [
                 {
@@ -3000,7 +3071,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-06T09:51:56+00:00"
+            "time": "2021-06-27T12:22:47+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -3222,16 +3293,16 @@
     "packages-dev": [
         {
             "name": "symfony/var-dumper",
-            "version": "v5.3.2",
+            "version": "v5.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "905a22c68b292ffb6f20d7636c36b220d1fba5ae"
+                "reference": "46aa709affb9ad3355bd7a810f9662d71025c384"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/905a22c68b292ffb6f20d7636c36b220d1fba5ae",
-                "reference": "905a22c68b292ffb6f20d7636c36b220d1fba5ae",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/46aa709affb9ad3355bd7a810f9662d71025c384",
+                "reference": "46aa709affb9ad3355bd7a810f9662d71025c384",
                 "shasum": ""
             },
             "require": {
@@ -3290,7 +3361,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v5.3.2"
+                "source": "https://github.com/symfony/var-dumper/tree/v5.3.3"
             },
             "funding": [
                 {
@@ -3306,7 +3377,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-06T09:51:56+00:00"
+            "time": "2021-06-24T08:13:00+00:00"
         }
     ],
     "aliases": [],
