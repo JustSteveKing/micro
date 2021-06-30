@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78a3b3aa070eecd18c7661bafc557a87",
+    "content-hash": "bc66ecf686c8e599ccccf0f9d4174f6c",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -895,12 +895,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JustSteveKing/micro-core.git",
-                "reference": "4db2c9cdbd1909f3646c4d44591c6f92874d7227"
+                "reference": "66c13e0c9ba8cdca1b605e74c25dcc95c89a112a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/4db2c9cdbd1909f3646c4d44591c6f92874d7227",
-                "reference": "4db2c9cdbd1909f3646c4d44591c6f92874d7227",
+                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/66c13e0c9ba8cdca1b605e74c25dcc95c89a112a",
+                "reference": "66c13e0c9ba8cdca1b605e74c25dcc95c89a112a",
                 "shasum": ""
             },
             "require": {
@@ -936,7 +936,7 @@
                 "issues": "https://github.com/JustSteveKing/micro-core/issues",
                 "source": "https://github.com/JustSteveKing/micro-core/tree/main"
             },
-            "time": "2021-06-29T20:01:59+00:00"
+            "time": "2021-06-30T07:17:07+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -3363,7 +3363,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
