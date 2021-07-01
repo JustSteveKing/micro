@@ -16,6 +16,8 @@ class ShowUserQuery
             'id',
             'name',
             'email',
+            'username',
+            'created_at'
         ];
     }
 

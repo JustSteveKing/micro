@@ -8,6 +8,7 @@ return [
     'console' => [
         'commands' => [
             \App\Console\RouteListCommand::class,
+            \App\Console\FindUserByIdCommand::class,
         ]
     ]
 ];
