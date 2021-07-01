@@ -772,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/JustSteveKing/micro-core.git",
-                "reference": "b15f1f1f3675827b926e341bfecd2fcf7fa6a4ec"
+                "reference": "e2b5cd65e907cd3924c7888ffdf600ed0e89ba4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/b15f1f1f3675827b926e341bfecd2fcf7fa6a4ec",
-                "reference": "b15f1f1f3675827b926e341bfecd2fcf7fa6a4ec",
+                "url": "https://api.github.com/repos/JustSteveKing/micro-core/zipball/e2b5cd65e907cd3924c7888ffdf600ed0e89ba4a",
+                "reference": "e2b5cd65e907cd3924c7888ffdf600ed0e89ba4a",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "issues": "https://github.com/JustSteveKing/micro-core/issues",
                 "source": "https://github.com/JustSteveKing/micro-core/tree/main"
             },
-            "time": "2021-06-30T11:20:04+00:00"
+            "time": "2021-07-01T09:14:09+00:00"
         },
         {
             "name": "league/tactician",
