@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\User;
+namespace Domain\User\Contracts;
 
 use JustSteveKing\Micro\Contracts\ServiceContract;
 
-interface UserService extends ServiceContract
+interface UserServiceContract extends ServiceContract
 {
 
 }

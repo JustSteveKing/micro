@@ -3,21 +3,21 @@
 declare(strict_types=1);
 
 use Doctrine\DBAL\Connection;
-use Domain\User\UserRepository;
-use Domain\User\UserService;
-use Infrastructure\Database\DoctrineUserRepository;
-use Infrastructure\Database\DoctrineUserService;
+use Domain\User\Contracts\UserRepositoryContract;
+use Domain\User\Contracts\UserServiceContract;
+use Infrastructure\Database\DoctrineUserRepositoryContract;
+use Infrastructure\Database\DoctrineUserServiceContract;
 use Psr\Container\ContainerInterface;
 
 return [
-    UserService::class => function (ContainerInterface $container) {
-        return new DoctrineUserService(
-            repository: $container->get(UserRepository::class),
+    UserServiceContract::class => function (ContainerInterface $container) {
+        return new DoctrineUserServiceContract(
+            repository: $container->get(UserRepositoryContract::class),
         );
     },
 
-    UserRepository::class => function (ContainerInterface $container) {
-        return new DoctrineUserRepository(
+    UserRepositoryContract::class => function (ContainerInterface $container) {
+        return new DoctrineUserRepositoryContract(
             connection: $container->get(Connection::class),
         );
     },

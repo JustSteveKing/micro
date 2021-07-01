@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Infrastructure\Database;
 
-use Domain\User\UserRepository;
-use Domain\User\UserService;
+use Domain\User\Contracts\UserRepositoryContract;
+use Domain\User\Contracts\UserServiceContract;
 
-class DoctrineUserService implements UserService
+class DoctrineUserServiceContract implements UserServiceContract
 {
     public function __construct(
-        private UserRepository $repository,
+        private UserRepositoryContract $repository,
     ) {}
 
     public function listAllUsers(array $columns): array

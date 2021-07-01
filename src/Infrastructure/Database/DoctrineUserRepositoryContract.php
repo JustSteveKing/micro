@@ -6,9 +6,9 @@ namespace Infrastructure\Database;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Domain\User\UserRepository;
+use Domain\User\Contracts\UserRepositoryContract;
 
-class DoctrineUserRepository implements UserRepository
+class DoctrineUserRepositoryContract implements UserRepositoryContract
 {
     private string $table = 'users';
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Handlers;
 
-use Domain\User\ListUsersQuery;
+use Domain\User\Queries\ListUsersQuery;
 use JustSteveKing\Micro\Http\ApiResponseFactory;
 use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;

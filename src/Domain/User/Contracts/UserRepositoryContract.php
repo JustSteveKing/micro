@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Domain\User;
+namespace Domain\User\Contracts;
 
 use JustSteveKing\Micro\Contracts\RepositoryContract;
 
-interface UserRepository extends RepositoryContract
+interface UserRepositoryContract extends RepositoryContract
 {
 
 }
