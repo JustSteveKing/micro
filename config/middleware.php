@@ -8,23 +8,23 @@ use JustSteveKing\Micro\Middleware\DisableFlocMiddleware;
 use Slim\App;
 
 return function (App $app) {
-    // Google Floc Middleware
-    $app->add(
-        middleware: DisableFlocMiddleware::class,
-    );
-
-    // Routing Middleware
-    $app->addRoutingMiddleware();
-
-    // BodyParsingMiddleware
-    $app->addBodyParsingMiddleware();
-
     // Error Middleware
     $errorMiddleware = $app->addErrorMiddleware(
         displayErrorDetails: (bool) $_ENV['APP_DEBUG'],
         logErrors: true,
         logErrorDetails: true,
     );
+
+    // Google Floc Middleware
+    $app->add(
+        middleware: DisableFlocMiddleware::class,
+    );
+
+    // BodyParsingMiddleware
+    $app->addBodyParsingMiddleware();
+
+    // Routing Middleware
+    $app->addRoutingMiddleware();
 
     $errorMiddleware->setDefaultErrorHandler(
         handler: new ProblemDetailHandler(

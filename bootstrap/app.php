@@ -17,5 +17,10 @@ $builder->addDefinitions(
     definitions: require __DIR__ . '/../config/container.php',
 );
 
+// Add Domain/User Definitions
+$builder->addDefinitions(
+    definitions: require __DIR__ . '/../config/domain-user.php',
+);
+
 // Build Container.
 return $builder->build();

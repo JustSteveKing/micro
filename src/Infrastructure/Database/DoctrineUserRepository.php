@@ -6,10 +6,12 @@ namespace Infrastructure\Database;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use JustSteveKing\Micro\Contracts\RepositoryContract;
+use Domain\User\UserRepository;
 
-class UserRepository implements RepositoryContract
+class DoctrineUserRepository implements UserRepository
 {
+    private string $table = 'users';
+
     private QueryBuilder $builder;
 
     public function __construct(Connection $connection)
@@ -36,9 +38,24 @@ class UserRepository implements RepositoryContract
             ->fetch();
     }
 
-    public function get()
+    public function get(string $columns = '*'): array
     {
-        // TODO: Implement get() method.
+        return $this->builder
+            ->select($columns)
+            ->from($this->table)
+            ->execute()
+            ->fetchAllAssociative();
+    }
+
+    public function whereId(string|int $id, string $columns = '*'): array
+    {
+        return $this->builder
+            ->select($columns)
+            ->from($this->table)
+            ->where('id = :id')
+            ->setParameter(':id', $id)
+            ->execute()
+            ->fetchAssociative();
     }
 
     public function save()

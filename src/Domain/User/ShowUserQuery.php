@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\User;
 
-class ListUsersQuery
+class ShowUserQuery
 {
+    public function __construct(
+        private string|int $id,
+    ) {}
+
     public function columns(): array
     {
         return [
@@ -13,5 +17,10 @@ class ListUsersQuery
             'name',
             'email',
         ];
+    }
+
+    public function id(): string|int
+    {
+        return $this->id;
     }
 }

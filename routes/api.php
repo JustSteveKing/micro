@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Handlers\RootHandler;
 use App\Handlers\TestHandler;
+use App\Handlers\UsersShowHandler;
 use Slim\App;
 
 /**
@@ -29,5 +30,12 @@ return function (App $app) {
         callable: TestHandler::class,
     )->setName(
         name: 'api:test'
+    );
+
+    $app->get(
+        pattern: '/users/{id}',
+        callable: UsersShowHandler::class,
+    )->setName(
+        name: 'api:users:show'
     );
 };

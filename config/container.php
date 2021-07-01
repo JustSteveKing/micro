@@ -2,10 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Console\RouteListCommand;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
-use Infrastructure\Database\UserRepository;
+use Domain\User\ListUsersHandler;
+use Domain\User\ListUsersQuery;
+use Domain\User\ShowUserHandler;
+use Domain\User\ShowUserQuery;
+use Domain\User\UserService;
 use JustSteveKing\Config\Repository;
 use JustSteveKing\ConfigLoader\Loader;
 use JustSteveKing\Micro\Contracts\KernelContract;
@@ -121,10 +126,17 @@ return [
         $locator = new InMemoryLocator();
 
         $locator->addHandler(
-            new \Domain\User\ListUsersHandler(
-                repository: $container->get(UserRepository::class),
+            new ListUsersHandler(
+                service: $container->get(UserService::class),
             ),
-            \Domain\User\ListUsersQuery::class,
+            ListUsersQuery::class,
+        );
+
+        $locator->addHandler(
+            new ShowUserHandler(
+                service: $container->get(UserService::class),
+            ),
+            ShowUserQuery::class,
         );
 
         $handlerMiddleware = new CommandHandlerMiddleware(
@@ -135,12 +147,6 @@ return [
 
         return new CommandBus(
             middleware: [$handlerMiddleware],
-        );
-    },
-
-    UserRepository::class => function (ContainerInterface $container) {
-        return new UserRepository(
-            connection: $container->get(Connection::class),
         );
     },
 
@@ -163,8 +169,8 @@ return [
         return $application;
     },
 
-    \App\Console\RouteListCommand::class => function (ContainerInterface $container) {
-        return new \App\Console\RouteListCommand(
+    RouteListCommand::class => function (ContainerInterface $container) {
+        return new RouteListCommand(
             slim: $container->get(KernelContract::class)->app(),
         );
     }
